@@ -1,0 +1,121 @@
+{use $installDomain, $jabberUser, $jabberDomain, $bugLinkFormat}
+<h1>Help for TheWire</h1>
+
+<h2>Introduction</h2>
+
+<p>
+TheWire is a tool for microblogging, this allows you to mention what you're
+doing at that moment.  Great example of that are:
+</p>
+
+<blockquote>
+"Trying to add icons to a vba treeview control. So far works by adding an .ico
+file directly, not yet by using an icon embeded in a dll."
+</blockquote>
+
+<blockquote>
+"Working today on preparing talks and demos for the #ezconference together with
+@bm."
+</blockquote>
+
+<p>
+You can add messages at the home page, or any other page if you are 
+logged in. There are a couple of additional features. The first of them 
+is <b>tagging</b>. If you include a word with a # sign before, TheWire will 
+automatically add a tag to the message. In Bårds message above, 
+"#ezconference" is converted into a tag as you can see here: 
+<a href='http://{$installDomain}/update/239'>http://{$installDomain}/update/239</a>
+</p>
+
+<h3>Tags</h3>
+
+<p>
+Tags should be used to give your message one of more categories. Those could be
+#ezc (eZ Components), #ezp (eZ Publish), #marketing, #ezconference, #fun, #bbq,
+or whatever you want. Tags can later be used to filter out specific content -
+something that is extra important for the jabber integration (more follows on
+that in a bit). Tags can only contain the characters A-Z, a-z, 0-9 and -, and
+have to start with a letter. You can very easily see all updates for a tag by
+going to f.e. <a
+href='http://{$installDomain}/tag/ezconference'>http://{$installDomain}/tag/ezconference</a>.
+</p>
+
+<h3>People Tags</h3>
+
+<p>
+Another convention is that if you talk about people you can use the @ 
+sign. A message with the text "@dr" will automatically add a link to 
+that person's updates, as you can see in <a
+href='http://{$installDomain}/update/240'>http://{$installDomain}/update/240</a>
+where @kn links to a list with all of Kore's updates (none right now 
+though). As example see <a href='http://{$installDomain}/person/pb'>http://{$installDomain}/person/pb</a>.
+</p>
+
+<h3>Links</h3>
+
+<p>
+Normal links are converted automatically to short links, just like 
+tinyurl.com does that. This is because the length of messages is 
+restricted to 250 characters.
+</p>
+<p>
+Links are automatically created to the public issue tracker by using
+"issue #12345" or "bug #12345" (without quotes). They will link to {$bugLinkFormat}.
+</p>
+
+<h2>Informational Pages</h2>
+
+<p>
+There are a few other pages with information:
+</p>
+
+<ol>
+<li><a href='http://{$installDomain}/person/all'>http://{$installDomain}/person/all</a>:
+shows the latest updated info per person to see what they're currently working
+on.</li>
+
+<li><a href='http://{$installDomain}/prefs'>http://{$installDomain}/prefs</a>: change
+your password, timezone and whether you want updates through jabber.</li>
+
+<li><a href='http://{$installDomain}/rss'>http://{$installDomain}/rss</a>:
+RSS output of the last 25 updates</li>
+
+<li><a href='http://{$installDomain}/rss/tag/thewire'>http://{$installDomain}/rss/tag/thewire</a>:
+RSS output of the last 25 updates for the tag "thewire" - you can of course use
+any tag you want here.</li>
+</ol>
+
+<h2>Jabber Integration</h2>
+
+<p>
+Another thing is jabber integration. When you register the mail contains 
+instructions on how to get TheWire added to your jabber account (see below).
+This allows you to receive updates through jabber (when you've turned it on in
+the preferences, and your client is not marked as Do Not Disturb). It also
+allows you to send updates on what you're doing to jabber. Just send a message
+to the "{$jabberUser}" user. If for some moment you don't want it to
+send you updates, you can write "shut up" or "stop" to that user. To enable
+updates again, you can use "start".
+</p>
+
+<p>
+You don't need VPN to access it, but you do need an account. You can 
+register for an account by going to
+<a href='http://{$installDomain}/register'>http://{$installDomain}/register</a>. Fill
+in all the information, and click "Register". A password will be generated and
+mailed to your account. In this same mail you can also find instructions on how
+to get jabber integration working. Let me know if you have problems.
+</p>
+
+<h3>Adding TheWire to jabber</h3>
+<p>
+In order to make jabber integration work, please follow the following
+procedure:
+</p>
+
+<ol>
+<li>Add the user "{$jabberUser}@{$jabberDomain}" to your jabber account.</li>
+<li>Send a message like "hello" to this new user.</li>
+<li>The jabber user will now authenticate you and ask for your authorization as well.</li>
+<li>Authorize the jabber user so that it can send messages to you.</li>
+</ol>

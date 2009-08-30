@@ -1,0 +1,4 @@
+{use $updates, $installDomain}
+<h1>Latest Updates per User</h1>
+
+{include 'format-msgs.ezt' send $updates as $msgList, $installDomain}

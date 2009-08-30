@@ -1,0 +1,83 @@
+{use $content, $user = 'Anonymous', $refresh = false, $rss = null, $tagCloud = null, $peopleCloud = null, $add_box, $installDomain}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>TheWire</title>
+<link type="text/css" rel="stylesheet" href="http://{$installDomain}/stylesheets/core.css"/>
+{if $rss !== null}
+<link rel="alternate" type="application/atom+xml" href="http://{$installDomain}/rss{$rss}" title="TheWire feed" />
+{/if}
+
+{if $refresh}
+<script src="http://yui.yahooapis.com/2.5.2/build/yahoo/yahoo-min.js"></script>
+<script src="http://yui.yahooapis.com/2.5.2/build/event/event-min.js"></script>
+<script src="http://yui.yahooapis.com/2.5.2/build/connection/connection-min.js"></script>
+<script>
+{literal}
+
+var handleSuccess = function(o){
+    if(o.responseText !== undefined){
+        var main = document.getElementById('main');
+        list = eval( o.responseText );
+        main.innerHTML = list;
+    }
+}
+
+var handleFailure = function(o){
+}
+
+var callback =
+{ 
+  success:handleSuccess,
+  failure: handleFailure,
+  argument: { foo:"foo", bar:"bar" }
+};
+
+function reload(){
+    var sUrl = "updates-ajax";
+    var request = YAHOO.util.Connect.asyncRequest('GET', sUrl, callback);
+    setTimeout("reload();",60000);
+}
+
+setTimeout("reload();",60000);
+{/literal}
+</script>
+{/if}
+</head>
+<body id='mini' onLoad='f();'>
+<div id="everything-mini">
+<ul id="menu-mini">
+{if $user != 'Anonymous'}
+	<li><a href='http://{$installDomain}/'>Home</a></li>
+	<li><a href='http://{$installDomain}/tag'>Latest Tag Updates</a></li>
+	<li><a href='http://{$installDomain}/person'>Latest Person Updates</a></li>
+	<li><a href='http://{$installDomain}/latest-links'>Latest Link Updates</a></li>
+	<li><a href='http://{$installDomain}/person/all'>Current Status</a></li>
+	<li><a href='http://{$installDomain}/help'>Help</a></li>
+	<li><a href='http://{$installDomain}/logout'>Logout</a></li>
+{else}
+	<li><a href='http://{$installDomain}/'>Login</a></li>
+	<li><a href='http://{$installDomain}/register'>Register</a></li>
+{/if}
+</ul>
+<br/>
+{if $user != 'Anonymous'}
+<div id="side-mini">
+{raw $add_box}
+</div>
+{/if}
+<div id="main-mini">
+	{raw $content}
+</div>
+
+{if $user != 'Anonymous'}
+<div id="user-mini">
+	<div class="username">{$user}</div>
+	<div><a href='http://{$installDomain}/prefs'>Preferences</a></div>
+</div>
+{/if}
+
+</div>
+</body>
+</html>

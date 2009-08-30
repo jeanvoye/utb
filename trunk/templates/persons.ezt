@@ -1,0 +1,7 @@
+{use $updates, $installDomain}
+<h1>Latest Updates per Person</h1>
+
+{foreach $updates as $tag => $perTag}
+<h2>{$tag}</h2>
+{include 'format-msgs.ezt' send $perTag as $msgList, $installDomain}
+{/foreach}

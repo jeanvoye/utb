@@ -1,0 +1,6 @@
+- Move "share.sqlite.empty" to "share.sqlite"
+- Copy settings.default.ini to settings.ini, and modify the contents.
+- Edit the include path in config.php
+- Make sure you adjust the path in www/.htaccess
+- Make cache/compiled_templates, the install dir and share.sqlite writable by
+  the webserver user.

@@ -1,0 +1,145 @@
+{use $content, $user = 'Anonymous', $refresh = false, $rss = null, $zoneTagCloud = null, $zonePeopleCloud = null, $add_box, $installDomain, $debugOutput = null}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Un Truc Bien</title>
+<link type="text/css" rel="stylesheet" href="http://{$installDomain}/stylesheets/core.css"/>
+{if $debugOutput !== null}
+<link type="text/css" rel="stylesheet" href="http://{$installDomain}/stylesheets/ezc-debug.css"/>
+{/if}
+
+{if $rss !== null}
+<link rel="alternate" type="application/atom+xml" href="http://{$installDomain}/rss{$rss}" title="TheWire feed" />
+{/if}
+
+<script src="http://yui.yahooapis.com/2.5.2/build/yahoo/yahoo-min.js"></script>
+<script src="http://yui.yahooapis.com/2.5.2/build/event/event-min.js"></script>
+<script src="http://yui.yahooapis.com/2.5.2/build/connection/connection-min.js"></script>
+<script>
+{literal}
+var handleFailure = function(o)
+{
+}
+
+var handleDeleteSuccess = function(o)
+{
+{/literal}
+{if $refresh}
+	setTimeout("reload();",500);
+{else}
+	window.location.reload();
+{/if}
+{literal}
+}
+
+var deleteCallback =
+{
+	success: handleDeleteSuccess,
+	failure: handleFailure
+};
+
+function deleteUpdate(id)
+{
+	var sUrl = "/update/" + id + "/delete";
+    var request = YAHOO.util.Connect.asyncRequest('POST', sUrl, deleteCallback);
+}
+{/literal}
+</script>
+{if $refresh}
+<script>
+{literal}
+
+var handleSuccess = function(o){
+    if(o.responseText !== undefined){
+        var main = document.getElementById('main');
+        list = eval( "(" + o.responseText + ")" );
+        main.innerHTML = list.content;
+    }
+}
+
+var callback =
+{ 
+  success:handleSuccess,
+  failure: handleFailure,
+  argument: { foo:"foo", bar:"bar" }
+};
+
+function reload(){
+    var sUrl = "updates.js";
+    var request = YAHOO.util.Connect.asyncRequest('GET', sUrl, callback);
+	setTimeout("reload();",30000);
+}
+
+setTimeout("reload();",30000);
+{/literal}
+</script>
+{/if}
+
+<script>
+{literal}
+function f(){if (document.add) { document.add.update.focus() } }
+{/literal}
+</script>
+</head>
+<body onLoad='f();'>
+<div id="everything">
+<ul id="menu">
+{if $user != 'Anonymous'}
+	<li><a href='http://{$installDomain}/'>Home</a></li>
+	<li><a href='http://{$installDomain}/tag'>Latest Tag Updates</a></li>
+	<li><a href='http://{$installDomain}/person'>Latest Person Updates</a></li>
+	<li><a href='http://{$installDomain}/latest-links'>Latest Link Updates</a></li>
+	<li><a href='http://{$installDomain}/person/all'>Current Status</a></li>
+	<li><a href='http://{$installDomain}/help'>Help</a></li>
+	<li><a href='http://{$installDomain}/logout'>Logout</a></li>
+{else}
+	<li><a href='http://{$installDomain}/'>Login</a></li>
+	<li><a href='http://{$installDomain}/register'>Register</a></li>
+{/if}
+</ul>
+<br/>
+<div id="main">
+	{raw $content}
+</div>
+
+<div style="float: right">
+<div id="user">
+	<div class="username">{$user}</div>
+	{if $user != 'Anonymous'}
+	<div><a href='http://{$installDomain}/prefs'>Preferences</a></div>
+	{/if}
+</div>
+
+{if $user != 'Anonymous'}
+<div id="side">
+{raw $add_box}
+</div>
+
+{raw $zoneTagCloud}
+{raw $zonePeopleCloud}
+
+<div class="graph">
+<object data='http://{$installDomain}/user_graph' height="200" width="300" type="image/svg+xml">
+<embed src='http://{$installDomain}/user_graph' height="200" width="300" type="image/svg+xml"/>
+</object>
+</div>
+
+{*
+<div class="graph">
+<object data='http://{$installDomain}/source_graph' height="200" width="300" type="image/svg+xml">
+<embed src='http://{$installDomain}/source_graph' height="200" width="300" type="image/svg+xml"/>
+</object>
+</div>
+*}
+
+{/if}
+</div>
+
+<div class="clear"></div>
+
+{if $debugOutput}
+    {raw $debugOutput}
+{/if}
+</body>
+</html>

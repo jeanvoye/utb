@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+
+div.ezc-debug-output
+{
+	border:1px dashed silver;
+	margin-top: 2em;
+	padding: 1em;
+    font-size: smaller;
+}
+
+table.log
+{
+	border: 1px solid lightgray;
+	width: 100%;
+	//border-collapse:collapse;
+}
+
+table.log th,td
+{
+	padding: 0;
+}
+
+table.log tr.debugheader
+{
+	background-color:#EEEEEE;
+	border-bottom:1px solid #444488;
+	border-top:1px solid #444488;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:0.9em;
+}
+
+table.log tr.debugheader td.source
+{
+	width: 78%;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+/* DEBUG */
+table.log span.verbosity1
+{
+	color: brown;
+}
+
+/* NOTICE */
+table.log span.verbosity16
+{
+    color: green;
+}
+
+/* WARNING */
+table.log span.verbosity32
+{
+    color: orange;
+}
+
+/* ERROR */
+table.log span.verbosity64
+{
+    color: red;
+}
+
+table.log tr.debugbody
+{
+    color:graytext;
+}
+
+table.log tr.debugbody td
+{
+	/*padding-bottom: 10px;
+	*/
+	background-color:#F8F8F8;
+	/*border:1px solid #E0E0E0;*/
+	margin:1em 0 1em;
+	/*font-family:"Courier New",Courier,monospace;
+	font-size:1em;*/
+}

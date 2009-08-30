@@ -1,0 +1,29 @@
+{use $prefs, $installDomain}
+<h1>Preferences</h1>
+
+<div class="pres">
+
+<form class="prefs" action='http://{$installDomain}/avatar/update' enctype="multipart/form-data" method='post'>
+<div>
+<img src='http://{$installDomain}/avatar/{$prefs['id']}'/>
+<br/>
+<input type="file" name="avatar"/> 
+<input type='submit' name='update' value="Update Avatar"/>
+</div>
+</form>
+
+<form class="prefs" action='http://{$installDomain}/prefs/update' method='post'>
+<div>
+Full name: <input type='fullname' name='fullname' value='{$prefs['fullname']}'/><br/><br/>
+Password: <input type='password' name='password'/> (Leave empty if you don't want to change it)<br/><br/>
+Timezone: {include 'timezones.ezt' send $prefs['timezone'] as $currentZone}<br/><br/>
+Jabber Account: <input name="jabber_name" value="{$prefs['jabber_name']}"/><br/><br/>
+Jabber Updates: <input type="checkbox" {if $prefs['jabber_type']}checked="yes"{/if} name="jabber_type"/><br/>
+Jabber Expand Username: <input type="checkbox" {if $prefs['jabber_expand_username']}checked="yes"{/if} name="jabber_expand_username"/><br/>
+(expands user initials to full names in jabber message, like "dr" to "Derick Rethans".<br/> 
+Automatic Web Refresh: <input type="checkbox" {if $prefs['http_refresh']}checked="yes"{/if} name="http_refresh"/><br/>
+<br/>
+<input type='submit' name='update' value="Update"/>
+</div>
+</form>
+</div>

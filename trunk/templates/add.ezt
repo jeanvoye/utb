@@ -1,0 +1,3 @@
+<h1>Add Update</h1>
+
+{include 'box-add-update.ezt' send true as $extensive}

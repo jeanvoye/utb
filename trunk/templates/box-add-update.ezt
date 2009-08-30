@@ -1,0 +1,11 @@
+{use $currentUrl, $installDomain}
+<div class="update-box">
+	<form name='add' action='http://{$installDomain}/add' method='post'>
+		<div>What are you working on:<br/>
+		<input name="update" style="width: 95%" /><br/>
+		<input name="redirUrl" type="hidden" value='{$currentUrl}'/>
+		<br/>
+		<input type="submit" name='add-update' value='Go'/> <span class="tiny">(Do not forget to tag your message)</span>
+		</div>
+	</form>
+</div>

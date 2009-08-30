@@ -1,0 +1,6 @@
+{use $currentZone}
+<select name="timezone">
+{foreach fetchTimeZones() as $zone}
+	<option value="{$zone}"{if $zone == $currentZone}} selected="yes"{/if}>{$zone}</option>
+{/foreach}
+</select>

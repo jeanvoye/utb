@@ -1,0 +1,15 @@
+{use $message = '', $success = false}
+<h1>Registration Result</h1>
+
+<div class="pres">
+
+<div class='regmessage'>
+{$message}
+</div>
+<br/><br/>
+
+{if !$success}
+<a href='/register'>try again</a>
+{/if}
+</div>
+</div>

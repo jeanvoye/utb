@@ -1,0 +1,8 @@
+{use $peopleCloud, $installDomain}
+{var $tags = $peopleCloud['tags']}
+{var $highest = $peopleCloud['highest']}
+<div id="tagcloud">
+{foreach $tags as $tag => $count}
+<span class='tagcloud{math_round( $count/$highest * 6) }'><a class='tag' href='http://{$installDomain}/person/{$tag}'>{$tag}</a></span>
+{/foreach}
+</div>

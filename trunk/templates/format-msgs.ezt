@@ -1,0 +1,23 @@
+{use $msgList, $showLink = false, $installDomain}
+{foreach $msgList as $update}
+
+<div class="status">
+	<table><tr>
+	<td valign='top'>
+		<img class='avatar' src='http://{$installDomain}/avatar/{$update['user_id']}'/>
+	</td>
+	<td style='float: right; width: 100%'>
+		<span class='user'><a class='person' href='http://{$installDomain}/person/{$update['user_id']}'>{$update['fullname']}</a>:</span>
+		<span class='message'>{raw $update['contents']}</span>
+		<span class='date'>{* date_format_timestamp( 'l, F dS, H:i', $update['date'] ) *} from {* $update['source'] *}</span>
+{if $update['user_id'] == currentUser()}
+		<span class='delete'><a href='javascript:deleteUpdate({$update['id']});'>[ X ]</a></span>
+{/if}
+{if $showLink}
+		<br/><br/>
+		<span class='link'>This link expands to:<br/> <a href='{$update['link']}'>{$update['link']}</a></span>
+{/if}
+	</td>
+	</tr></table>
+</div>
+{/foreach}

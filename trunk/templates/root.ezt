@@ -1,0 +1,8 @@
+{use $updates, $next, $limit, $installDomain}
+<h1>Latest Updates</h1>
+<div class='navigation'><a class='navigation' href='http://{$installDomain}/updates/{$next}'>Next {$limit} updates</a></div>
+<div class='last-updated'>Last updated: {date_format_timestamp( 'Y-m-d H:i:s' )}</div>
+
+{include 'format-msgs.ezt' send $updates as $msgList, $installDomain}
+
+<div class='navigation'><a class='navigation' href='http://{$installDomain}/updates/{$next}'>Next {$limit} updates</a></div>

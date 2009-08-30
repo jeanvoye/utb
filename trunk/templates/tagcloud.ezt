@@ -1,0 +1,8 @@
+{use $tagCloud, $installDomain}
+{var $tags = $tagCloud['tags']}
+{var $highest = $tagCloud['highest']}
+<div id="tagcloud">
+{foreach $tags as $tag => $count}
+<span class='tagcloud{math_round( $count/$highest * 6) }'><a class='tag' href='http://{$installDomain}/tag/{$tag}'>{$tag}</a></span>
+{/foreach}
+</div>

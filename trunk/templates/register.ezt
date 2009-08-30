@@ -1,0 +1,14 @@
+{use $mailDomain, $defaultTimezone, $jabberDomain}
+<h1>Register</h1>
+
+<div class="pres">
+
+<form class="prefs" action='register/submit' method='post'>
+User name: <input name='user_id' size='4'/>@{$mailDomain} (This is where the password will be sent to)<br/><br/>
+Full name: <input name='fullname' size='32'/> (Like "Derick Rethans")<br/><br/>
+Jabber Account: <input name="jabber_name"/> (Like "dr@{$jabberDomain}")<br/><br/>
+Timezone: {include 'timezones.ezt' send $defaultTimezone as $currentZone}<br/><br/>
+<br/>
+<input type='submit' name='reg' value="Register"/>
+</form>
+</div>

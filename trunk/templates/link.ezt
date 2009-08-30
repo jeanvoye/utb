@@ -1,0 +1,14 @@
+{use $url, $shortLink, $updates, $installDomain}
+<h1>Link</h1>
+
+<p>
+The short link <a href='http://{$installDomain}/link/{$shortLink}/redirect'>http://{$installDomain}/link/{$shortLink}</a> points to:<br/>
+<a href='{$url}'>{$url}</a>
+</p>
+
+{if $updates != ''}
+<p>
+This link was used in the following update:
+</p>
+{include 'format-msgs.ezt' send $updates as $msgList, $installDomain}
+{/if}

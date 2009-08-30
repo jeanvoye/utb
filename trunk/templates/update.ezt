@@ -1,0 +1,4 @@
+{use $updates, $id, $installDomain}
+<h1>Update #{$id}</h1>
+
+{include 'format-msgs.ezt' send $updates as $msgList, $installDomain}

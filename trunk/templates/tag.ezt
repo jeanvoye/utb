@@ -1,0 +1,4 @@
+{use $updates, $tag, $installDomain}
+<h1>Latest Updates for #{$tag}</h1>
+
+{include 'format-msgs.ezt' send $updates as $msgList, $installDomain}

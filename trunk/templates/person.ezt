@@ -1,0 +1,4 @@
+{use $updates, $user_name, $user_id, $installDomain}
+<h1>Latest Updates for {$user_name} (@{$user_id})</h1>
+
+{include 'format-msgs.ezt' send $updates as $msgList, $installDomain}

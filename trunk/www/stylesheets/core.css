@@ -1,0 +1,277 @@
+body
+{
+	background: #fff;
+	color: black;
+	font-family: sans-serif;
+}
+
+body#mini
+{
+	background: #fff;
+	color: black;
+	font-family: sans-serif;
+	font-size: 125%;
+}
+
+div#everything
+{
+	width: 950px;
+	margin: 0pt auto;
+}
+
+div#everything-mini
+{
+	width: 100%;
+	margin: 0pt auto;
+}
+
+h1
+{
+	color: #700;
+}
+
+div#main
+{
+	float: left;
+	width: 600px;
+	margin-right: 32px;
+	font-size: smaller;
+}
+
+div#main-mini
+{
+	font-size: smaller;
+}
+
+div#user
+{
+	margin-top: 55px;
+	border: #777 solid 1px;
+	width: 300px;
+	padding: 5px;
+}
+
+div#user-mini
+{
+	margin-top: 55px;
+	border: #777 solid 1px;
+	padding: 5px;
+}
+
+div#tagcloud
+{
+	margin-top: 15px;
+	border: #777 solid 1px;
+	width: 300px;
+	padding: 5px;
+}
+
+div.graph
+{
+	margin-top: 15px;
+	border: #777 solid 1px;
+	width: 300px;
+	padding: 5px;
+}
+
+div#side
+{
+	margin-top: 15px;
+	border: #777 solid 1px;
+	width: 300px;	
+	padding: 5px;
+}
+
+div#side-mini
+{
+	margin-top: 15px;
+	border: #777 solid 1px;
+	padding: 5px;
+}
+
+ul#menu
+{
+	color: #000;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	font-size: smaller;
+	float: right;
+}
+
+ul#menu-mini
+{
+	color: #000;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+}
+
+ul#menu li
+{
+	float: left;
+	margin-right: 8px;        
+}
+
+ul#menu-mini li
+{
+	display: inline;
+}
+
+div.status
+{
+	margin-bottom: 3px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border-bottom: #777 1px solid;
+}
+
+span.date
+{
+	font-size: smaller;
+	color: #777;
+	white-space: nowrap;
+}
+
+span.message
+{
+	color: black;
+}
+
+span.delete a
+{
+	font-size: smaller;
+	color: black;
+	background-color: #ddd;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+span.delete a:hover
+{
+	font-size: smaller;
+	background-color: #777;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+span.user a.person, span.message a.tag, span.message a.html, div#tagcloud a.tag, span.message a.person, div.navigation a.navigation
+{
+	text-decoration: none;
+	color: #f06020;
+	font-weight: bold;
+}
+
+span.message a.tag, span.message a.person, span.message a.html
+{
+	font-weight: normal;
+}
+
+span.message a.tag, span.message a.person
+{
+	color: #2060f0;
+}
+
+span.message a.html, span.link a
+{
+	color: #208020;
+}
+
+span.user a.person:hover, span.message a.tag:hover, div#tagcloud a.tag:hover, span.message a.person:hover, span.message a.html:hover, span.link a:hover, div.navigation a.navigation:hover
+{
+	text-decoration: underline;
+}
+
+div.login div.prefs
+{
+	font-size: larger;
+}
+
+input
+{
+	margin-top: 5px;
+}
+
+form.login, form.prefs
+{
+	padding: 10px;
+	border: #777 1px solid;
+}
+
+
+.tagcloud0
+{
+	font-size: 8px;
+}
+
+.tagcloud1
+{
+	font-size: 11px;
+}
+
+.tagcloud2
+{
+	font-size: 14px;
+}
+
+.tagcloud3
+{
+	font-size: 17px;
+}
+
+.tagcloud4
+{
+	font-size: 20px;
+}
+
+.tagcloud5
+{
+	font-size: 23px;
+}
+
+.tagcloud6
+{
+	font-size: 26px;
+}
+
+.regmessage
+{
+	color: #e50e00;
+	font-weight: bold;
+	font-size: larger;
+}
+
+span.tiny
+{
+	font-size: 60%;
+}
+
+div.last-updated
+{
+	font-size: smaller;
+	color: #777;
+	text-align: right;
+}
+
+img.avatar
+{
+	margin-right: 5px;
+}
+
+table, tr, td
+{
+	margin: 0;
+	padding: 0;
+}
+
+div.navigation
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+div.clear
+{
+    clear: both;
+}
