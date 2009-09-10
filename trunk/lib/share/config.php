@@ -108,8 +108,6 @@ class shareMvcConfiguration implements ezcMvcDispatcherConfiguration
 		$password = null;
 		$loginWithForm = true;
 
-		//$debug->log( $password, ezcLog::INFO, array( __METHOD__ ) );
-
 		$credentials = new ezcAuthenticationPasswordCredentials( $user, md5( $password ) );
 		$authentication = new ezcAuthentication( $credentials );
 		$authentication->session = $session;
@@ -122,6 +120,7 @@ class shareMvcConfiguration implements ezcMvcDispatcherConfiguration
 			$request->variables['reasons']  = $status;
 
 			$request->uri = '/login-required';
+		    debugLogger::log( var_export( $status, true ), ezcLog::DEBUG, array( "source" => __METHOD__ ) );
 			return new ezcMvcInternalRedirect( $request );
 		}
 
@@ -168,16 +167,6 @@ class shareMvcConfiguration implements ezcMvcDispatcherConfiguration
 		$result->variables['bugLinkFormat'] = $this->config->getSetting( 'formats', 'bugLinkFormat' );
 		$result->variables['tagCloud'] = shareApp::tagCloud();
 		$result->variables['peopleCloud'] = shareApp::peopleCloud();
-
-		debugLogger::log( "testing ezcDebug ezcLog::DEBUG", ezcLog::DEBUG );
-        debugLogger::log( "testing ezcDebug ezcLog::DEBUG", ezcLog::DEBUG );
-        debugLogger::log( "testing ezcDebug ezcLog::NOTICE", ezcLog::NOTICE );
-        debugLogger::log( "testing ezcDebug ezcLog::NOTICE", ezcLog::NOTICE );
-        debugLogger::log( "testing ezcDebug ezcLog::WARNING", ezcLog::WARNING );
-        debugLogger::log( "testing ezcDebug ezcLog::WARNING", ezcLog::WARNING );
-        debugLogger::log( "testing ezcDebug ezcLog::ERROR", ezcLog::ERROR );
-        debugLogger::log( "testing ezcDebug ezcLog::ERROR", ezcLog::ERROR, array( "source" => __METHOD__ ) );
-        debugLogger::log( "testing ezcDebug ezcLog::ERROR", ezcLog::ERROR, array( "source" => __METHOD__ ) );
         $result->variables['debugOutput'] = debugLogger::generateOutput();
 
 		$this->runAddCurrentUrlFilter( $result );
@@ -279,16 +268,19 @@ class shareMvcConfiguration implements ezcMvcDispatcherConfiguration
 
 	function runResponseFilters( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result, ezcMvcResponse $response )
 	{
-		if ( in_array( 'gzip', $request->accept->encodings ) )
-		{
-			$filter = new ezcMvcGzipResponseFilter();
-			$filter->filterResponse( $response );
-		}
-		else if ( in_array( 'deflate', $request->accept->encodings ) )
-		{
-			$filter = new ezcMvcGzDeflateResponseFilter();
-			$filter->filterResponse( $response );
-		}
+	    if ( !ezcBase::inDevMode() )
+	    {
+    		if ( in_array( 'gzip', $request->accept->encodings ) )
+    		{
+    			$filter = new ezcMvcGzipResponseFilter();
+    			$filter->filterResponse( $response );
+    		}
+    		else if ( in_array( 'deflate', $request->accept->encodings ) )
+    		{
+    			$filter = new ezcMvcGzDeflateResponseFilter();
+    			$filter->filterResponse( $response );
+    		}
+	    }
 	}
 
 	function createResponseWriter( ezcMvcRoutingInformation $routeInfo, ezcMvcRequest $request, ezcMvcResult $result, ezcMvcResponse $response )
