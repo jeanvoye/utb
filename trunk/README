@@ -1,4 +1,5 @@
 - Move "share.sqlite.empty" to "share.sqlite"
+  TODO : provide empty MySQL dump.
 - Copy settings.default.ini to settings.ini, and modify the contents.
 - Edit the include path in config.php
 - Make sure you adjust the path in www/.htaccess
