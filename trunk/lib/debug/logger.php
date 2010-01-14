@@ -9,6 +9,7 @@
  * @license http://ez.no/licenses/new_bsd New BSD License
  */
 
+
 /**
  * The debugLogger class is a wrapper around the ezcDebug system.
  * It will be called from places in the code where debug is needed,
