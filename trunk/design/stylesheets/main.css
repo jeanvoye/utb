@@ -131,12 +131,19 @@ ul.panel li{
 	padding:12px;
 	border:solid 0px #FF6103;
 	background-color:#EEEEEE;
-	margin-top:10px;
+	margin-top:2px;
 	margin-right:10px;
-	margin-bottom:10px;
+	margin-bottom:2px;
+	padding-top:2px;
+	padding-bottom:2px;
 	padding:10px;
 	
 }
+
+ul.panel li div.rate-utb{
+    
+}
+
 ul.topbar{
 	list-style-type:none;
 }
