@@ -6,7 +6,7 @@ body {
 	-moz-background-inline-policy:continuous;
 	-moz-background-origin:padding;
 	background:#FFFFFF url(../images/fondo.jpg) repeat-y scroll 0 0;
-	background-position:top right;
+	/*background-position:top right;*/
 	background-repeat: repeat-x;
 	margin-left: 0px;
 	margin-top: 0px;
